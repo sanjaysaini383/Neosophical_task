@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Product, ProductCategory, Filters } from '../types/index';
+import { Product, Filters } from '../types/index';
 
 interface ProductStore {
   products: Product[];

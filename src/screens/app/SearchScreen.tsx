@@ -16,7 +16,7 @@ export const SearchScreen: React.FC = () => {
 
   // Debounced search
   const handleSearch = useCallback(
-    debounce((term: string) => {
+    debounce((term: string | any) => {
       if (!term.trim()) {
         setFilteredProducts(products);
         return;
@@ -75,7 +75,7 @@ export const SearchScreen: React.FC = () => {
   }, [products]);
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20 md:pb-0">
+    <div className="min-h-screen bg-gray-50 pb-32 md:pb-16 lg:pb-20">
       {/* Header */}
       <Header title="Search" showBack />
 
@@ -172,7 +172,7 @@ export const SearchScreen: React.FC = () => {
       )}
 
       {/* Results */}
-      <div className="px-6 mt-6 pb-24 md:pb-0">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-6 pb-24 md:pb-0">
         {displayProducts.length === 0 ? (
           <EmptyState
             icon="🔍"
@@ -191,7 +191,7 @@ export const SearchScreen: React.FC = () => {
             <p className="text-sm text-gray-600 mb-4">
               Found {displayProducts.length} products
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {displayProducts.map((product) => (
                 <div
                   key={product.id}

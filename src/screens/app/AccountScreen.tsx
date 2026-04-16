@@ -7,12 +7,12 @@ import { useLocationStore } from '../../stores/locationStore';
 export const AccountScreen: React.FC = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuthStore();
-  const { selectedLocation, locations } = useLocationStore();
+  const { locations } = useLocationStore();
   const [showMenu, setShowMenu] = useState(false);
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white pb-32 md:pb-16 lg:pb-20">
         <Header title="Account" />
         <div className="flex items-center justify-center h-96">
           <EmptyState
@@ -35,7 +35,7 @@ export const AccountScreen: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20 md:pb-0">
+    <div className="min-h-screen bg-gray-50 pb-32 md:pb-16 lg:pb-20">
       {/* Header */}
       <Header title="Account" />
 

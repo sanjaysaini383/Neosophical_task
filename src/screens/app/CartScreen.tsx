@@ -12,7 +12,7 @@ export const CartScreen: React.FC = () => {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white pb-32 md:pb-16 lg:pb-20">
         <Header showBack title="Shopping Cart" />
         <div className="flex items-center justify-center h-96">
           <EmptyState
@@ -30,7 +30,7 @@ export const CartScreen: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-32 md:pb-0">
+    <div className="min-h-screen bg-gray-50 pb-40 md:pb-20 lg:pb-24">
       {/* Header */}
       <Header showBack title="Shopping Cart" />
 

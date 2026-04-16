@@ -23,7 +23,7 @@ export const FavoritesScreen: React.FC = () => {
 
   if (favoriteProducts.length === 0) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white pb-32 md:pb-16 lg:pb-20">
         <Header showBack title="Favorites" />
         <div className="flex items-center justify-center h-96">
           <EmptyState
@@ -41,12 +41,12 @@ export const FavoritesScreen: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20 md:pb-0">
+    <div className="min-h-screen bg-gray-50 pb-32 md:pb-16 lg:pb-20">
       {/* Header */}
       <Header showBack title="Favorites" />
 
       {/* Products Grid */}
-      <div className="max-w-7xl mx-auto px-6 py-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-bold text-gray-900">❤️ My Favorites</h2>
@@ -56,7 +56,7 @@ export const FavoritesScreen: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {favoriteProducts.map((product) => (
             <div
               key={product.id}

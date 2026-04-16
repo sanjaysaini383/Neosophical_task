@@ -15,7 +15,7 @@ export const OrderSuccessScreen: React.FC = () => {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6">
+    <div className="min-h-screen bg-white pb-32 md:pb-16 lg:pb-20 flex flex-col items-center justify-center px-6">
       {/* Success Animation */}
       <div className="relative mb-8 w-24 h-24 bg-green-100 rounded-full flex items-center justify-center animate-bounce">
         <div className="text-5xl text-primary-600">✓</div>

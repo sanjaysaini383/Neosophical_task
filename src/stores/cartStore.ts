@@ -51,20 +51,22 @@ export const useCartStore = create<CartStore>((set, get) => ({
     return { items: updatedItems, totalPrice: newTotalPrice };
   }),
 
-  updateQuantity: (productId, quantity) => set((state) => {
+  updateQuantity: (productId, quantity) => {
     if (quantity <= 0) {
       return get().removeItem(productId);
     }
-
-    const updatedItems = state.items.map((item) =>
-      item.productId === productId ? { ...item, quantity } : item
-    );
-    const newTotalPrice = updatedItems.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
-    return { items: updatedItems, totalPrice: newTotalPrice };
-  }),
+    
+    set((state) => {
+      const updatedItems = state.items.map((item) =>
+        item.productId === productId ? { ...item, quantity } : item
+      );
+      const newTotalPrice = updatedItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0
+      );
+      return { items: updatedItems, totalPrice: newTotalPrice };
+    });
+  },
 
   clearCart: () => set({ items: [], totalPrice: 0 }),
 

@@ -18,6 +18,7 @@ export const VerificationScreen: React.FC = () => {
     } else if (timer === 0) {
       setCanResend(true);
     }
+    return undefined;
   }, [timer, canResend]);
 
   const handleOtpChange = (index: number, value: string) => {

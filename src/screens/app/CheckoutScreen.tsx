@@ -3,16 +3,13 @@ import { useNavigate } from 'react-router-dom';
 import { Header, Button, Input, Card } from '../../components';
 import { useCartStore } from '../../stores/cartStore';
 import { useLocationStore } from '../../stores/locationStore';
-import { useAuthStore } from '../../stores/authStore';
 import { useProductStore } from '../../stores/productStore';
-import { formatCurrency } from '../../utils/helpers';
 import { simulateDelay } from '../../utils/helpers';
 
 export const CheckoutScreen: React.FC = () => {
   const navigate = useNavigate();
   const { items, totalPrice, clearCart } = useCartStore();
   const { selectedLocation } = useLocationStore();
-  const { user } = useAuthStore();
   const { getProductById } = useProductStore();
 
   const [selectedPayment, setSelectedPayment] = useState('card');
@@ -42,7 +39,7 @@ export const CheckoutScreen: React.FC = () => {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white pb-32 md:pb-16 lg:pb-20">
         <Header showBack title="Checkout" />
         <div className="flex items-center justify-center h-96">
           <div className="text-center">
@@ -55,7 +52,7 @@ export const CheckoutScreen: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-32 md:pb-0">
+    <div className="min-h-screen bg-gray-50 pb-40 md:pb-20 lg:pb-24">
       {/* Header */}
       <Header showBack title="Checkout" />
 

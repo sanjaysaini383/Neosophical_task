@@ -6,7 +6,7 @@ export const OrderFailureScreen: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-6">
+    <div className="min-h-screen bg-white pb-32 md:pb-16 lg:pb-20 flex flex-col items-center justify-center px-6">
       {/* Error Icon */}
       <div className="relative mb-8 w-24 h-24 bg-red-100 rounded-full flex items-center justify-center">
         <div className="text-5xl">❌</div>

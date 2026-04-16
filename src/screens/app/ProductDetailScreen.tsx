@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Header, Button, Badge } from '../../components';
+import { Header, Button } from '../../components';
 import { useProductStore } from '../../stores/productStore';
 import { useCartStore } from '../../stores/cartStore';
 import { useFavoritesStore } from '../../stores/favoritesStore';
-import { formatCurrency, calculateDiscount, getDiscountText } from '../../utils/helpers';
+import { calculateDiscount, getDiscountText } from '../../utils/helpers';
 
 export const ProductDetailScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ export const ProductDetailScreen: React.FC = () => {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="min-h-screen bg-white pb-32 md:pb-16 lg:pb-20 flex flex-col">
         <Header showBack title="Product" />
         <div className="flex-1 flex items-center justify-center">
           <p className="text-gray-600">Product not found</p>
@@ -43,7 +43,7 @@ export const ProductDetailScreen: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white pb-20 md:pb-0">
+    <div className="min-h-screen bg-white pb-32 md:pb-16 lg:pb-20">
       {/* Header */}
       <Header showBack title="Product Details" />
 
