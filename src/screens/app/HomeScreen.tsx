@@ -42,45 +42,45 @@ export const HomeScreen: React.FC = () => {
       <Header title="Nectar" showCart cartCount={0} />
 
       {/* Location and Profile Bar - Mobile only */}
-      <div className="md:hidden bg-white px-6 py-3 flex justify-between items-center border-b border-gray-200">
-        <div className="flex items-center gap-2">
-          <span className="text-2xl">📍</span>
-          <div>
+      <div className="md:hidden bg-white px-4 py-3 flex justify-between items-center border-b border-gray-200">
+        <div className="flex items-center gap-2 flex-1 min-w-0">
+          <span className="text-xl flex-shrink-0">📍</span>
+          <div className="min-w-0 flex-1">
             <p className="text-xs text-gray-600">Delivering to</p>
-            <p className="text-sm font-semibold text-gray-900 max-w-xs truncate">
+            <p className="text-sm font-semibold text-gray-900 truncate">
               {selectedLocation?.address.split(',')[0] || 'Select Location'}
             </p>
           </div>
         </div>
-        <button onClick={() => navigate('/account')} className="text-2xl">👤</button>
+        <button onClick={() => navigate('/account')} className="text-xl flex-shrink-0">👤</button>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-6 space-y-8">
         {/* Search Bar */}
-        <div className="mb-6">
+        <div>
           <button
             onClick={() => navigate('/search')}
-            className="w-full px-4 py-3 bg-gray-100 rounded-lg text-gray-500 text-left hover:bg-gray-200 transition-colors flex items-center gap-2"
+            className="w-full px-4 py-3 md:py-4 bg-gray-100 rounded-xl text-gray-500 text-left hover:bg-gray-200 transition-colors flex items-center gap-3 font-medium"
           >
-            <span>🔍</span> Search store
+            <span className="text-lg">🔍</span> Search store
           </button>
         </div>
 
         {/* Exclusive Offer Banner */}
-        <div className="mb-6 p-4 bg-gradient-to-r from-secondary to-orange-500 rounded-lg text-white">
-          <p className="font-semibold">Exclusive Offer</p>
-          <p className="text-sm">Get 10% OFF on your first order</p>
+        <div className="p-6 bg-gradient-to-r from-secondary to-orange-500 rounded-2xl text-white shadow-md">
+          <p className="font-bold text-lg mb-1">Exclusive Offer</p>
+          <p className="text-base opacity-90">Get 10% OFF on your first order</p>
         </div>
 
         {/* Fresh Vegetables Section */}
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold text-gray-900">Fresh Vegetables</h2>
-            <a href="#" className="text-primary-600 text-sm font-semibold">See all</a>
+        <div>
+          <div className="flex justify-between items-center mb-5">
+            <h2 className="text-xl font-bold text-gray-900">Fresh Vegetables</h2>
+            <a href="#" className="text-primary-600 text-sm font-semibold hover:underline">See all →</a>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
             {filteredProducts.slice(0, 4).map((product) => (
               <div
                 key={product.id}
@@ -97,13 +97,13 @@ export const HomeScreen: React.FC = () => {
         </div>
 
         {/* Exclusive Offer Section */}
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold text-gray-900">Exclusive Offer</h2>
-            <a href="#" className="text-primary-600 text-sm font-semibold">See all</a>
+        <div>
+          <div className="flex justify-between items-center mb-5">
+            <h2 className="text-xl font-bold text-gray-900">Exclusive Offer</h2>
+            <a href="#" className="text-primary-600 text-sm font-semibold hover:underline">See all →</a>
           </div>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
             {filteredProducts.filter(p => p.discount).slice(0, 4).map((product) => (
               <div
                 key={product.id}
@@ -120,23 +120,23 @@ export const HomeScreen: React.FC = () => {
         </div>
 
         {/* Categories Section */}
-        <div className="mb-8">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">Categories</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 mb-5">Categories</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4">
             {categories.slice(0, 8).map((category, idx) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`p-4 rounded-xl text-center transition-colors border ${
+                className={`p-5 md:p-6 rounded-2xl text-center transition-all border-2 ${
                   selectedCategory === category
-                    ? 'bg-primary-50 border-primary-600'
-                    : 'bg-gray-50 border-gray-200 hover:bg-primary-50'
+                    ? 'bg-primary-50 border-primary-600 shadow-md'
+                    : 'bg-white border-gray-200 hover:border-primary-600 hover:bg-primary-50'
                 }`}
               >
-                <div className="text-4xl mb-2">
+                <div className="text-4xl md:text-5xl mb-3">
                   {['🥬', '🍎', '🥩', '🐟', '🥐', '🥤', '🥛', '🌾'][idx]}
                 </div>
-                <p className="text-xs text-gray-700 font-medium capitalize truncate">
+                <p className="text-xs md:text-sm text-gray-700 font-semibold capitalize truncate">
                   {category}
                 </p>
               </button>
@@ -145,14 +145,14 @@ export const HomeScreen: React.FC = () => {
         </div>
 
         {/* Best Selling Section */}
-        <div className="mb-8">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-bold text-gray-900">Best Selling</h2>
-            <a href="#" className="text-primary-600 text-sm font-semibold">See all</a>
+        <div>
+          <div className="flex justify-between items-center mb-5">
+            <h2 className="text-xl font-bold text-gray-900">Best Selling</h2>
+            <a href="#" className="text-primary-600 text-sm font-semibold hover:underline">See all →</a>
           </div>
           
           {loading ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
               <SkeletonLoader count={8} />
             </div>
           ) : displayProducts.length === 0 ? (
@@ -166,7 +166,7 @@ export const HomeScreen: React.FC = () => {
               }}
             />
           ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
               {displayProducts.slice(0, 10).map((product) => (
                 <div
                   key={product.id}

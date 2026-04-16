@@ -67,7 +67,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   return (
-    <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+    <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       {/* Image Container */}
       <div className="relative h-40 sm:h-48 bg-gray-100 overflow-hidden">
         <img
@@ -78,7 +78,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         
         {/* Discount Badge */}
         {product.discount && (
-          <div className="absolute top-2 right-2 bg-secondary text-white px-2 py-1 rounded-lg text-xs font-semibold">
+          <div className="absolute top-3 right-3 bg-secondary text-white px-3 py-1 rounded-xl text-xs font-bold shadow-sm">
             {getDiscountText(product.discount)}
           </div>
         )}
@@ -86,7 +86,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         {/* Favorite Button */}
         <button
           onClick={toggleFavorite}
-          className="absolute top-2 left-2 bg-white rounded-full p-2 hover:bg-gray-100"
+          className="absolute top-3 left-3 bg-white rounded-full p-2 hover:bg-gray-100 shadow-sm transition-colors"
         >
           {favorite ? '❤️' : '🤍'}
         </button>
@@ -100,13 +100,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       </div>
 
       {/* Content */}
-      <div className="p-3 sm:p-4">
-        <h3 className="font-semibold text-gray-900 text-sm sm:text-base line-clamp-2">
+      <div className="p-4 md:p-5">
+        <h3 className="font-semibold text-gray-900 text-sm md:text-base line-clamp-2">
           {product.name}
         </h3>
 
         {/* Unit */}
-        <p className="text-xs text-gray-500 mt-1">{product.unit}</p>
+        <p className="text-xs text-gray-500 mt-1 font-medium">{product.unit}</p>
 
         {/* Rating */}
         <div className="flex items-center gap-1 mt-2 text-xs text-gray-600">
@@ -120,7 +120,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             {formatCurrency(product.price)}
           </p>
           {product.discount && (
-            <p className="text-xs text-gray-500 line-through">
+            <p className="text-xs text-gray-400 line-through">
               {formatCurrency(calculateDiscount(product.price, product.discount))}
             </p>
           )}
@@ -128,18 +128,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
         {/* Add to Cart */}
         <div className="flex items-center gap-2 mt-4">
-          <div className="flex items-center border border-gray-200 rounded-lg">
+          <div className="flex items-center border-2 border-gray-200 rounded-xl">
             <button
               onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              className="px-2 py-1 text-gray-600 hover:bg-gray-100"
+              className="px-2 py-1 text-gray-600 hover:bg-gray-50 font-semibold"
               disabled={!product.inStock}
             >
               −
             </button>
-            <span className="px-3 py-1 text-sm font-semibold">{quantity}</span>
+            <span className="px-3 py-1 text-sm font-bold text-gray-900">{quantity}</span>
             <button
               onClick={() => setQuantity(quantity + 1)}
-              className="px-2 py-1 text-gray-600 hover:bg-gray-100"
+              className="px-2 py-1 text-gray-600 hover:bg-gray-50 font-semibold"
               disabled={!product.inStock}
             >
               +
@@ -148,7 +148,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <button
             onClick={handleAddToCart}
             disabled={!product.inStock}
-            className="flex-1 bg-primary-600 text-white py-2 rounded-lg font-semibold hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm"
+            className="flex-1 bg-primary-600 text-white py-2 rounded-xl font-bold hover:bg-primary-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors text-sm"
           >
             Add
           </button>

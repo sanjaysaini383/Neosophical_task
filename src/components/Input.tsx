@@ -22,9 +22,9 @@ export const Input: React.FC<InputProps> = ({
       )}
       <input
         className={`
-          w-full px-4 py-3 rounded-lg border-2 border-gray-200
+          w-full px-4 py-3 rounded-xl border-2 border-gray-200
           focus:border-primary-600 focus:outline-none transition-colors
-          placeholder-gray-400 text-gray-900
+          placeholder-gray-400 text-gray-900 font-medium
           disabled:bg-gray-100 disabled:cursor-not-allowed
           ${error ? 'border-danger' : ''}
           ${className}

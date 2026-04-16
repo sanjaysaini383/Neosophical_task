@@ -44,14 +44,15 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="sticky top-0 bg-white border-b border-gray-200 z-30">
-      <div className="px-4 py-4 lg:px-8">
+      <div className="px-4 py-3 md:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          {/* Left Section */}
-          <div className="flex items-center gap-3">
+          {/* Left Section - Back Button & Title */}
+          <div className="flex items-center gap-2 min-w-0">
             {showBack && (
               <button
                 onClick={handleBack}
-                className="text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition-colors md:hidden"
+                className="flex-shrink-0 text-gray-700 hover:bg-gray-100 p-2 rounded-lg transition-colors"
+                title="Go back"
               >
                 ← Back
               </button>
@@ -60,18 +61,18 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="text-2xl font-bold text-primary-600">🌾 Nectar</span>
             )}
             {title && title !== 'Nectar' && !showBack && (
-              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">{title}</h1>
+              <h1 className="text-lg md:text-xl font-bold text-gray-900 truncate">{title}</h1>
             )}
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Center */}
           {title === 'Nectar' && (
             <nav className="hidden lg:flex items-center gap-8 flex-1 justify-center mx-12">
               {navItems.slice(0, 4).map((item) => (
                 <button
                   key={item.path}
                   onClick={() => navigate(item.path)}
-                  className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-2 text-sm font-medium transition-colors whitespace-nowrap ${
                     isActive(item.path)
                       ? 'text-primary-600'
                       : 'text-gray-700 hover:text-primary-600'
@@ -89,14 +90,14 @@ export const Header: React.FC<HeaderProps> = ({
             </nav>
           )}
 
-          {/* Right Section */}
-          <div className="flex items-center gap-4">
+          {/* Right Section - User & Cart */}
+          <div className="flex items-center gap-3">
             {user && (
               <div className="hidden sm:flex items-center gap-2">
                 <img
                   src={`https://ui-avatars.com/api/?name=${user.name}&background=22c55e&color=fff`}
                   alt={user.name}
-                  className="w-8 h-8 rounded-full"
+                  className="w-9 h-9 rounded-full border-2 border-primary-600"
                 />
                 <span className="text-sm font-medium text-gray-700 hidden lg:inline">{user.name}</span>
               </div>
